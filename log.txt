@@ -1,4 +1,30 @@
-1: 
-2: 
-3: 
-4: 
+1: Blau
+2: Red
+3: Red
+4: Blau
+5: Blau
+6: Red
+7: Blau
+8: Blau
+9: Red
+10: Blau
+11: Red
+12: Red
+13: Red
+14: Red
+15: Blau
+16: Blau
+17: Blau
+18: Red
+19: Blau
+20: Blau
+21: Blau
+22: Red
+23: Blau
+24: Blau
+25: Red
+26: Blau
+27: Blau
+28: Blau
+29: Blau
+30: Blau

@@ -83,11 +83,13 @@ impl Choice {
     }
 
     fn print_result(&self) {
+        let len = self.n_choices as f64;
+        let n_times_before_selection = self.n_times_before_selection as f64;
         println!(
             "Having made random choices {} times, finally one choice occured {} times in a row!!\nTheoretically it would take an average of {} turns for this to happen\nFinal choice is: {}\n(check log.txt for all choices made)",
             self.n_turn,
             self.n_times_before_selection,
-            self.n_choices.pow(self.n_times_before_selection -1),
+            (len.powf(n_times_before_selection)-1.0)/(len-1.0),
             self.choice.as_ref().unwrap()
         )
     }
