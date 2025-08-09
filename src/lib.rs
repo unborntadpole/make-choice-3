@@ -3,6 +3,7 @@ use std::io;
 use std::io::Write;
 use std::error::Error;
 use std::fs::File;
+use std::fs::OpenOptions;
 
 
 pub fn run() -> Result<(), Box<dyn Error>>{
@@ -55,17 +56,16 @@ impl Choice {
         choice
     }
 
-// use std::fs::OpenOptions;
-//     fn log(&self, choice: &String) -> std::io::Result<()> {
-//         let mut file = OpenOptions::new()
-//             .append(true)   // allow writing at the end of file
-//             .create(true)   // create file if it doesn't exist
-//             .open("log.txt")?;
+    fn log(&self, choice: &String) -> std::io::Result<()> {
+        let mut file = OpenOptions::new()
+            .append(true)   // allow writing at the end of file
+            .create(true)   // create file if it doesn't exist
+            .open("log.txt")?;
 
-//         writeln!(file, "{}: {}", self.n_turn + 1,choice)?;
+        writeln!(file, "{}: {}", self.n_turn + 1,choice)?;
 
-//         Ok(())
-//     }
+        Ok(())
+    }
 
     fn check_choice(&mut self, new_choice: String){
         self.n_turn += 1;
@@ -120,7 +120,7 @@ fn main_logic(mut ch: Choice) -> u32 {
     let mut rng = rand::rng();
     while ch.should_we_continue() {
         let choice = ch.get_random_choice(&mut rng);
-        // ch.log(&choice).unwrap_or_else(|_| eprintln!("Failed to save log choice !"));
+        ch.log(&choice).unwrap_or_else(|_| eprintln!("Failed to save log choice !"));
         ch.check_choice(choice);
     }
     ch.print_result();

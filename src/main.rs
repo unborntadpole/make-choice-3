@@ -1,3 +1,8 @@
+use std::process;
+
 fn main() {
-    // make_choice::run();
+    if let Err(e) = make_choice::run(){
+        eprintln!("Application error: {e}");
+        process::exit(1);
+    }
 }
